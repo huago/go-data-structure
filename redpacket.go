@@ -5,8 +5,10 @@ import (
 	"time"
 )
 
-func Distribute(totalAmount float64, count int) (packets []float64) {
+func Distribute(totalAmount float64, count int) []float64{
 	totalAmountCent := int(totalAmount * 100)
+
+	packets := make([]float64, count)
 
 	// 随机分成count份
 	total, every := divide(count)
@@ -27,7 +29,7 @@ func Distribute(totalAmount float64, count int) (packets []float64) {
 		packets[i] /= 100
 	}
 
-	return
+	return packets
 }
 
 func divide(count int) (total int, every []int) {
